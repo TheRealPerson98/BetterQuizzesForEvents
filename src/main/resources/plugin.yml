@@ -1,0 +1,17 @@
+name: BetterQuizsForEvents
+version: '${project.version}'
+main: com.person98.betterquizsforevents.BetterQuizsForEvents
+api-version: 1.19
+commands:
+  addquestion:
+    description: Add a question with four choices, question number, and choice colors
+    usage: /addquestion "<question>" "<choice1>" "<choice2>" "<choice3>" "<choice4>" <question-number> <choice1color> <choice2color> <choice3color> <choice4color>
+  question:
+    description: Display a question with specified question number to all players
+    usage: /question <question-number>
+  deathban:
+    description: Toggles Death Bans
+    usage: /deathban
+  setdeathbanmessage:
+    description: death ban message
+    usage: /setdeathbanmessage <message>

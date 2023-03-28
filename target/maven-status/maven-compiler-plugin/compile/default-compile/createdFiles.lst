@@ -1,0 +1,6 @@
+com\person98\betterquizsforevents\commands\QuestionCommand.class
+com\person98\betterquizsforevents\commands\SetDeathBanMessageCommand.class
+com\person98\betterquizsforevents\listeners\DeathBanListener.class
+com\person98\betterquizsforevents\BetterQuizsForEvents.class
+com\person98\betterquizsforevents\commands\AddQuestionCommand.class
+com\person98\betterquizsforevents\commands\DeathBanCommand.class

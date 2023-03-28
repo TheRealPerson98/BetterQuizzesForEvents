@@ -1,0 +1,23 @@
+# Default config.yml for BetterQuizsForEvents
+
+questions:
+  1:
+    question: "What is the capital of France?"
+    choice1: "Paris"
+    choice2: "London"
+    choice3: "Berlin"
+    choice4: "Madrid"
+    choice1color: "§4"
+    choice2color: "§4"
+    choice3color: "§4"
+    choice4color: "§4"
+  2:
+    question: "Which element is represented by the symbol 'Au'?"
+    choice1: "Gold"
+    choice2: "Silver"
+    choice3: "Copper"
+    choice4: "Iron"
+    choice1color: "§4"
+    choice2color: "§4"
+    choice3color: "§4"
+    choice4color: "§4"

@@ -1,0 +1,26 @@
+# Default config.yml for BetterQuizsForEvents
+
+questions:
+  '1':
+    question: Who is person98's dad?
+    choice1: austin
+    choice2: your mom
+    choice3: daddy
+    choice4: no one
+    choice1color: §c
+    choice2color: §0
+    choice3color: §e
+    choice4color: §9
+  '2':
+    question: Who is person98's dad?
+    choice1: austin
+    choice2: your mom
+    choice3: daddy
+    choice4: no one
+    choice1color: §c
+    choice2color: §0
+    choice3color: §e
+    choice4color: §9
+deathBan:
+  enabled: false
+  message: Wrong Answer

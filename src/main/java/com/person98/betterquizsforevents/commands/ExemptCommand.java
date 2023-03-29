@@ -11,6 +11,10 @@ import org.bukkit.entity.Player;
 public class ExemptCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("betterquizsforevents.exempt")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return false;
+        }
         if (args.length != 1) {
             sender.sendMessage(ChatColor.RED + "Usage: /exempt <player>");
             return false;

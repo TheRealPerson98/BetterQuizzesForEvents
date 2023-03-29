@@ -27,6 +27,8 @@ public class BetterQuizzesForEvents extends JavaPlugin {
         this.getCommand("question").setExecutor(new QuestionCommand(this));
         getCommand("togglespectatorondeath").setExecutor(new ToggleSpectatorOnDeathCommand(this));
         this.getCommand("exempt").setExecutor(new ExemptCommand());
+        this.getCommand("bqfehelp").setExecutor(new HelpCommand());
+
 
 
         // Register listeners

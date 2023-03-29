@@ -21,3 +21,28 @@ commands:
   exempt:
     description: Exempts a player from quiz questions and consequences.
     usage: /<command> <player>
+  bqfehelp:
+    description: Shows help and usage information for BetterQuizzesForEvents
+    usage: /<command>
+  permissions:
+    betterquizsforevents.addquestion:
+      description: Allows adding questions to the quiz
+      default: op
+    betterquizsforevents.question:
+      description: Allows running a quiz question
+      default: op
+    betterquizsforevents.deathban:
+      description: Allows toggling death bans
+      default: op
+    betterquizsforevents.setdeathbanmessage:
+      description: Allows setting the death ban message
+      default: op
+    betterquizsforevents.togglespectatorondeath:
+      description: Allows toggling between survival and spectator mode on death
+      default: op
+    betterquizsforevents.exempt:
+      description: Allows exempting a player from quizzes
+      default: op
+    betterquizsforevents.bqfehelp:
+      description: Allows access to the help command
+      default: op

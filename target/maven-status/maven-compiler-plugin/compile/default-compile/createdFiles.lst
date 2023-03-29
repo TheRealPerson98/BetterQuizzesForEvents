@@ -6,6 +6,7 @@ com\person98\betterquizsforevents\commands\SetDeathBanMessageCommand.class
 com\person98\betterquizsforevents\listeners\DeathBanListener.class
 com\person98\betterquizsforevents\commands\ExemptCommand.class
 com\person98\betterquizsforevents\listeners\QuizListener.class
+com\person98\betterquizsforevents\commands\QuestionCommand$2.class
 com\person98\betterquizsforevents\commands\AddQuestionCommand.class
 com\person98\betterquizsforevents\commands\DeathBanCommand.class
 com\person98\betterquizsforevents\commands\ToggleSpectatorOnDeathCommand.class

@@ -1,6 +1,7 @@
 package com.person98.betterquizsforevents.commands;
 
 import com.person98.betterquizsforevents.BetterQuizzesForEvents;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,6 +16,11 @@ public class ToggleSpectatorOnDeathCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("betterquizsforevents.togglespectatorondeath")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return false;
+        }
+
         if (!(sender instanceof Player)) {
             sender.sendMessage("This command can only be used by a player.");
             return false;

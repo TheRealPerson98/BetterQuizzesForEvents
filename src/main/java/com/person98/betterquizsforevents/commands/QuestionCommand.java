@@ -10,12 +10,17 @@ import org.bukkit.entity.Player;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.scheduler.BukkitRunnable;
 import com.person98.betterquizsforevents.listeners.QuizListener;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.util.HashSet;
 
 
 public class QuestionCommand implements CommandExecutor {
     private final BetterQuizzesForEvents plugin;
     public static int currentQuestion;
     public static int correctAnswer;
+    public static HashSet<Player> exemptPlayers = new HashSet<>();
+
     public QuestionCommand(BetterQuizzesForEvents plugin) {
         this.plugin = plugin;
     }
@@ -23,6 +28,10 @@ public class QuestionCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("betterquizsforevents.question")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return false;
+        }
         // Validate the arguments and check for the correct syntax
         if (args.length != 1) {
             sender.sendMessage(ChatColor.RED + "Usage: /question <question-number>");
@@ -92,11 +101,34 @@ public class QuestionCommand implements CommandExecutor {
         correctAnswerColor = ChatColor.valueOf(plugin.getConfig().getString("questions." + questionNumber + ".choice" + correctAnswer + "color"));
 
         int quizDuration = plugin.getConfig().getInt("quizDuration", 20); // Get the quiz duration from the config, default to 20 seconds
+        BukkitTask countdownTask = new BukkitRunnable() {
+            int remainingSeconds = quizDuration;
 
+            @Override
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                        player.sendActionBar(ChatColor.GREEN + String.format("%d.%02d", remainingSeconds / 20, remainingSeconds % 20 * 5));
+
+                        if (remainingSeconds <= 100) { // Check if there are 5 seconds or less remaining
+                            player.sendTitle(ChatColor.RED + String.valueOf(remainingSeconds / 20), "", 0, 20, 0);
+                        }
+
+                }
+
+                remainingSeconds--;
+
+                if (remainingSeconds < 0) {
+                    cancel();
+                }
+            }
+        }.runTaskTimer(plugin, 0, 1);
+
+        // End the question and cancel the countdown timer
         new BukkitRunnable() {
             @Override
             public void run() {
                 QuizListener.endQuestion();
+                countdownTask.cancel();
             }
         }.runTaskLater(plugin, quizDuration * 20); // Convert quiz duration to ticks (20 ticks per second)
 

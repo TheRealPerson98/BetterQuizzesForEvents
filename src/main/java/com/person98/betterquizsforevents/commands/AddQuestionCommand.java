@@ -20,6 +20,10 @@ public class AddQuestionCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("betterquizsforevents.addquestion")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return false;
+        }
         // Combine the arguments into a single string
         String input = String.join(" ", args);
 

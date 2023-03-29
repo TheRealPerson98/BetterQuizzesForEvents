@@ -34,7 +34,7 @@ public class AddQuestionCommand implements CommandExecutor {
 
         // Validate the extracted arguments
         if (extracted.size() != 5) {
-            sender.sendMessage(ChatColor.RED + "Usage: /addquestion \"<question>\" \"<choice1>\" \"<choice2>\" \"<choice3>\" \"<choice4>\" <question-number> <choice1color> <choice2color> <choice3color> <choice4color>");
+            sender.sendMessage(ChatColor.RED + "Usage: /addquestion \"<question>\" \"<choice1>\" \"<choice2>\" \"<choice3>\" \"<choice4>\" <question-number> <choice1color> <choice2color> <choice3color> <choice4color> <correct-answer>");
             return false;
         }
 
@@ -56,13 +56,24 @@ public class AddQuestionCommand implements CommandExecutor {
             return false;
         }
 
-// Convert color names to color codes
+        // Convert color names to color codes
         try {
-            // Convert color names to color codes
             String choice1ColorCode = ChatColor.valueOf(updatedArgs[1].toUpperCase()).toString();
             String choice2ColorCode = ChatColor.valueOf(updatedArgs[2].toUpperCase()).toString();
             String choice3ColorCode = ChatColor.valueOf(updatedArgs[3].toUpperCase()).toString();
             String choice4ColorCode = ChatColor.valueOf(updatedArgs[4].toUpperCase()).toString();
+            int correctAnswer;
+            try {
+                correctAnswer = Integer.parseInt(updatedArgs[5]);
+            } catch (NumberFormatException e) {
+                sender.sendMessage(ChatColor.RED + "Invalid correct answer number. Please enter a valid integer.");
+                return false;
+            }
+
+            if (correctAnswer < 1 || correctAnswer > 4) {
+                sender.sendMessage(ChatColor.RED + "Invalid correct answer number. Please enter a number between 1 and 4.");
+                return false;
+            }
 
             // Store the question, choices, question number, and choice colors in the configuration
             plugin.getConfig().set("questions." + questionNumber + ".question", question);
@@ -70,10 +81,11 @@ public class AddQuestionCommand implements CommandExecutor {
             plugin.getConfig().set("questions." + questionNumber + ".choice2", choice2);
             plugin.getConfig().set("questions." + questionNumber + ".choice3", choice3);
             plugin.getConfig().set("questions." + questionNumber + ".choice4", choice4);
-            plugin.getConfig().set("questions." + questionNumber + ".choice1color", choice1ColorCode);
-            plugin.getConfig().set("questions." + questionNumber + ".choice2color", choice2ColorCode);
-            plugin.getConfig().set("questions." + questionNumber + ".choice3color", choice3ColorCode);
-            plugin.getConfig().set("questions." + questionNumber + ".choice4color", choice4ColorCode);
+            plugin.getConfig().set("questions." + questionNumber + ".choice1color", updatedArgs[1].toUpperCase());
+            plugin.getConfig().set("questions." + questionNumber + ".choice2color", updatedArgs[2].toUpperCase());
+            plugin.getConfig().set("questions." + questionNumber + ".choice3color", updatedArgs[3].toUpperCase());
+            plugin.getConfig().set("questions." + questionNumber + ".choice4color", updatedArgs[4].toUpperCase());
+            plugin.getConfig().set("questions." + questionNumber + ".correctAnswer", correctAnswer);
 
             // Save the changes to the configuration file
             plugin.saveConfig();

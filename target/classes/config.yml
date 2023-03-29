@@ -1,23 +1,42 @@
 # Default config.yml for BetterQuizsForEvents
-
+#colors and their blocks
+#RED_CONCRETE and RED_WOOL: ChatColor.RED
+#BLUE_CONCRETE and BLUE_WOOL: ChatColor.BLUE
+#GREEN_CONCRETE and GREEN_WOOL: ChatColor.GREEN
+#YELLOW_CONCRETE and YELLOW_WOOL: ChatColor.YELLOW
+#LIGHT_BLUE_CONCRETE and LIGHT_BLUE_WOOL: ChatColor.AQUA
+#BLACK_CONCRETE and BLACK_WOOL: ChatColor.BLACK
+#PURPLE_CONCRETE and PURPLE_WOOL: ChatColor.DARK_PURPLE
+#GRAY_CONCRETE and GRAY_WOOL: ChatColor.GRAY
+#WHITE_CONCRETE and WHITE_WOOL: ChatColor.WHITE
+quizDuration: 20
+spectatorOnDeath: false
 questions:
-  1:
-    question: "What is the capital of France?"
-    choice1: "Paris"
-    choice2: "London"
-    choice3: "Berlin"
-    choice4: "Madrid"
-    choice1color: "§4"
-    choice2color: "§4"
-    choice3color: "§4"
-    choice4color: "§4"
-  2:
-    question: "Which element is represented by the symbol 'Au'?"
-    choice1: "Gold"
-    choice2: "Silver"
-    choice3: "Copper"
-    choice4: "Iron"
-    choice1color: "§4"
-    choice2color: "§4"
-    choice3color: "§4"
-    choice4color: "§4"
+  '1':
+    question: What color is the sky?
+    choice1: Red
+    choice2: Blue
+    choice3: Green
+    choice4: Yellow
+    choice1color: RED
+    choice2color: AQUA
+    choice3color: YELLOW
+    choice4color: BLUE
+    correctAnswer: 2
+  '2':
+    question: What color is grass?
+    choice1: Red
+    choice2: Blue
+    choice3: Green
+    choice4: Yellow
+    choice1color: RED
+    choice2color: AQUA
+    choice3color: YELLOW
+    choice4color: BLUE
+    correctAnswer: 3
+deathBan:
+  enabled: false
+  message: Wrong Answer
+
+
+

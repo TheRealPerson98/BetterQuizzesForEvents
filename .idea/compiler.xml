@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BetterQuizzesForEvents" />
+        <module name="betterquizzesforevents" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="BetterQuizzesForEvents" target="1.8" />
+      <module name="betterquizzesforevents" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

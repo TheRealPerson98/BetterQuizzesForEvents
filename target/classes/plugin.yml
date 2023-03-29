@@ -1,6 +1,6 @@
 name: BetterQuizsForEvents
 version: '1.0-SNAPSHOT'
-main: com.person98.betterquizsforevents.BetterQuizsForEvents
+main: com.person98.betterquizsforevents.BetterQuizzesForEvents
 api-version: 1.19
 commands:
   addquestion:
@@ -15,3 +15,6 @@ commands:
   setdeathbanmessage:
     description: death ban message
     usage: /setdeathbanmessage <message>
+  togglespectatorondeath:
+    description: Toggle between survival and spectator mode on death.
+    usage: /togglespectatorondeath

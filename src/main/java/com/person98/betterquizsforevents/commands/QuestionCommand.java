@@ -8,13 +8,18 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.scheduler.BukkitRunnable;
+import com.person98.betterquizsforevents.listeners.QuizListener;
+
 
 public class QuestionCommand implements CommandExecutor {
     private final BetterQuizzesForEvents plugin;
-
+    public static int currentQuestion;
+    public static int correctAnswer;
     public QuestionCommand(BetterQuizzesForEvents plugin) {
         this.plugin = plugin;
     }
+    public static ChatColor correctAnswerColor;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -55,10 +60,16 @@ public class QuestionCommand implements CommandExecutor {
         }
 
         // Display the choices in chat with different colors
-        TextComponent choice1Text = new TextComponent(ChatColor.translateAlternateColorCodes('&', choice1Color + "Choice 1: " + choice1));
-        TextComponent choice2Text = new TextComponent(ChatColor.translateAlternateColorCodes('&', choice2Color + "Choice 2: " + choice2));
-        TextComponent choice3Text = new TextComponent(ChatColor.translateAlternateColorCodes('&', choice3Color + "Choice 3: " + choice3));
-        TextComponent choice4Text = new TextComponent(ChatColor.translateAlternateColorCodes('&', choice4Color + "Choice 4: " + choice4));
+        ChatColor choice1ChatColor = ChatColor.valueOf(choice1Color.toUpperCase());
+        ChatColor choice2ChatColor = ChatColor.valueOf(choice2Color.toUpperCase());
+        ChatColor choice3ChatColor = ChatColor.valueOf(choice3Color.toUpperCase());
+        ChatColor choice4ChatColor = ChatColor.valueOf(choice4Color.toUpperCase());
+
+        TextComponent choice1Text = new TextComponent(choice1ChatColor + "Choice 1: " + choice1);
+        TextComponent choice2Text = new TextComponent(choice2ChatColor + "Choice 2: " + choice2);
+        TextComponent choice3Text = new TextComponent(choice3ChatColor + "Choice 3: " + choice3);
+        TextComponent choice4Text = new TextComponent(choice4ChatColor + "Choice 4: " + choice4);
+
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.spigot().sendMessage(choice1Text);
@@ -66,6 +77,17 @@ public class QuestionCommand implements CommandExecutor {
             player.spigot().sendMessage(choice3Text);
             player.spigot().sendMessage(choice4Text);
         }
+        int correctAnswer = plugin.getConfig().getInt("questions." + questionNumber + ".correctAnswer");
+        correctAnswerColor = ChatColor.valueOf(plugin.getConfig().getString("questions." + questionNumber + ".choice" + correctAnswer + "color"));
+
+        int quizDuration = plugin.getConfig().getInt("quizDuration", 20); // Get the quiz duration from the config, default to 20 seconds
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                QuizListener.endQuestion();
+            }
+        }.runTaskLater(plugin, quizDuration * 20); // Convert quiz duration to ticks (20 ticks per second)
 
         return true;
     }

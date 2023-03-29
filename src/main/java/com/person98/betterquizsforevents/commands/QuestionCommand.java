@@ -102,22 +102,23 @@ public class QuestionCommand implements CommandExecutor {
 
         int quizDuration = plugin.getConfig().getInt("quizDuration", 20); // Get the quiz duration from the config, default to 20 seconds
         BukkitTask countdownTask = new BukkitRunnable() {
-            int remainingSeconds = quizDuration;
+            int remainingTicks = quizDuration * 20;
 
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                        player.sendActionBar(ChatColor.GREEN + String.format("%d.%02d", remainingSeconds / 20, remainingSeconds % 20 * 5));
+                    player.sendActionBar(ChatColor.GREEN + String.format("%d.%02d", remainingTicks / 20, (remainingTicks % 20) * 100 / 20));
 
-                        if (remainingSeconds <= 100) { // Check if there are 5 seconds or less remaining
-                            player.sendTitle(ChatColor.RED + String.valueOf(remainingSeconds / 20), "", 0, 20, 0);
+                    if (remainingTicks <= 100 && remainingTicks >= 20) { // Check if there are 5 seconds or less remaining
+                        if (!BetterQuizzesForEvents.exemptPlayers.contains(player.getUniqueId())) {
+                            player.sendTitle(ChatColor.RED + String.valueOf(remainingTicks / 20), "", 0, 20, 0);
                         }
-
+                    }
                 }
 
-                remainingSeconds--;
+                remainingTicks--;
 
-                if (remainingSeconds < 0) {
+                if (remainingTicks < 0) {
                     cancel();
                 }
             }

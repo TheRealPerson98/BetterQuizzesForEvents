@@ -71,6 +71,17 @@ public class QuestionCommand implements CommandExecutor {
         TextComponent choice4Text = new TextComponent(choice4ChatColor + "Choice 4: " + choice4);
 
 
+        // Display the question as a title on the screen for all non-exempt players
+        // and as a chat message for exempt players
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!BetterQuizzesForEvents.exemptPlayers.contains(player.getUniqueId())) {
+                player.sendTitle(ChatColor.GOLD + question, "", 10, 70, 20);
+            } else {
+                player.sendMessage(ChatColor.GOLD + question);
+            }
+        }
+
+        // Display the choices in chat for all players
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.spigot().sendMessage(choice1Text);
             player.spigot().sendMessage(choice2Text);

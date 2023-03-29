@@ -5,7 +5,7 @@ api-version: 1.19
 commands:
   addquestion:
     description: Add a question with four choices, question number, and choice colors
-    usage: /addquestion "<question>" "<choice1>" "<choice2>" "<choice3>" "<choice4>" <question-number> <choice1color> <choice2color> <choice3color> <choice4color>
+    usage: /addquestion "<question>" "<choice1>" "<choice2>" "<choice3>" "<choice4>" <question-number> <choice1color> <choice2color> <choice3color> <choice4color> <correct-answer>
   question:
     description: Display a question with specified question number to all players
     usage: /question <question-number>
@@ -18,3 +18,6 @@ commands:
   togglespectatorondeath:
     description: Toggle between survival and spectator mode on death.
     usage: /togglespectatorondeath
+  exempt:
+    description: Exempts a player from quiz questions and consequences.
+    usage: /<command> <player>

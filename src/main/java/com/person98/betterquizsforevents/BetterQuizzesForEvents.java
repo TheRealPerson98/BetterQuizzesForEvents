@@ -6,8 +6,12 @@ import com.person98.betterquizsforevents.listeners.QuizListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 public class BetterQuizzesForEvents extends JavaPlugin {
+    public static Set<UUID> exemptPlayers = new HashSet<>();
 
     @Override
     public void onEnable() {
@@ -22,6 +26,8 @@ public class BetterQuizzesForEvents extends JavaPlugin {
         this.getCommand("addquestion").setExecutor(new AddQuestionCommand(this));
         this.getCommand("question").setExecutor(new QuestionCommand(this));
         getCommand("togglespectatorondeath").setExecutor(new ToggleSpectatorOnDeathCommand(this));
+        this.getCommand("exempt").setExecutor(new ExemptCommand());
+
 
         // Register listeners
         getServer().getPluginManager().registerEvents(new DeathBanListener(this), this);

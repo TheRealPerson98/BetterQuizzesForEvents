@@ -38,16 +38,17 @@ public class QuizListener implements Listener {
         }
     }
     public static void endQuestion() {
-        for (Player player : correctPlayers) {
-            player.sendMessage(ChatColor.GREEN + "You answered correctly!");
-        }
-
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (!correctPlayers.contains(player)) {
-                player.setHealth(0); // Kill the player
+            if (!BetterQuizzesForEvents.exemptPlayers.contains(player.getUniqueId())) {
+                Location location = player.getLocation();
+                Block block = location.getWorld().getBlockAt(location.subtract(0, 1, 0));
+                ChatColor blockColor = getColorFromBlock(block.getType());
+
+                if (blockColor == null || !blockColor.equals(QuestionCommand.correctAnswerColor)) {
+                    player.setHealth(0); // Kill the player
+                }
             }
         }
-
         correctPlayers.clear(); // Clear the HashSet
     }
 

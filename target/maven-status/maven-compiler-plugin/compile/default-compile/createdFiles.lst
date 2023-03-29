@@ -1,9 +1,10 @@
+com\person98\betterquizsforevents\BetterQuizzesForEvents.class
 com\person98\betterquizsforevents\commands\QuestionCommand$1.class
 com\person98\betterquizsforevents\commands\QuestionCommand.class
 com\person98\betterquizsforevents\listeners\QuizListener$1.class
 com\person98\betterquizsforevents\commands\SetDeathBanMessageCommand.class
 com\person98\betterquizsforevents\listeners\DeathBanListener.class
-com\person98\betterquizsforevents\BetterQuizzesForEvents.class
+com\person98\betterquizsforevents\commands\ExemptCommand.class
 com\person98\betterquizsforevents\listeners\QuizListener.class
 com\person98\betterquizsforevents\commands\AddQuestionCommand.class
 com\person98\betterquizsforevents\commands\DeathBanCommand.class

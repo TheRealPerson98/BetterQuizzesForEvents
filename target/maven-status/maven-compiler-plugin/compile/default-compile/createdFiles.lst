@@ -1,6 +1,9 @@
 com\person98\betterquizsforevents\commands\HelpCommand.class
+com\person98\betterquizsforevents\commands\ExplainQuizCommand$1.class
 com\person98\betterquizsforevents\BetterQuizzesForEvents.class
+com\person98\betterquizsforevents\listeners\ChatListener.class
 com\person98\betterquizsforevents\commands\QuestionCommand$1.class
+com\person98\betterquizsforevents\commands\ExplainQuizCommand.class
 com\person98\betterquizsforevents\commands\QuestionCommand.class
 com\person98\betterquizsforevents\listeners\QuizListener$1.class
 com\person98\betterquizsforevents\commands\SetDeathBanMessageCommand.class

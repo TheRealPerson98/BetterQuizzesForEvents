@@ -1,6 +1,7 @@
 package com.person98.betterquizsforevents;
 
 import com.person98.betterquizsforevents.commands.*;
+import com.person98.betterquizsforevents.listeners.ChatListener;
 import com.person98.betterquizsforevents.listeners.DeathBanListener;
 import com.person98.betterquizsforevents.listeners.QuizListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,12 +29,14 @@ public class BetterQuizzesForEvents extends JavaPlugin {
         getCommand("togglespectatorondeath").setExecutor(new ToggleSpectatorOnDeathCommand(this));
         this.getCommand("exempt").setExecutor(new ExemptCommand());
         this.getCommand("bqfehelp").setExecutor(new HelpCommand());
+        this.getCommand("explainquiz").setExecutor(new ExplainQuizCommand(this));
 
 
 
         // Register listeners
         getServer().getPluginManager().registerEvents(new DeathBanListener(this), this);
         getServer().getPluginManager().registerEvents(new QuizListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
 
 

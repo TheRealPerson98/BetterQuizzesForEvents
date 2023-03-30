@@ -19,6 +19,7 @@ public class QuestionCommand implements CommandExecutor {
     private final BetterQuizzesForEvents plugin;
     public static int currentQuestion;
     public static int correctAnswer;
+    public static boolean quizActive = false;
     public static HashSet<Player> exemptPlayers = new HashSet<>();
 
     public QuestionCommand(BetterQuizzesForEvents plugin) {
@@ -28,6 +29,8 @@ public class QuestionCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        quizActive = true;
+
         if (!sender.hasPermission("betterquizsforevents.question")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
             return false;
@@ -130,8 +133,19 @@ public class QuestionCommand implements CommandExecutor {
             public void run() {
                 QuizListener.endQuestion();
                 countdownTask.cancel();
+
+                // Set quizActive to false after the quiz ends
+                quizActive = false;
+
+                // Display the correct choice as a green title for all non-exempt players
+                String correctChoice = plugin.getConfig().getString("questions." + questionNumber + ".choice" + correctAnswer);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (!exemptPlayers.contains(player)) {
+                        player.sendTitle(ChatColor.GREEN + "Correct choice: " + correctChoice, "", 10, 70, 20);
+                    }
+                }
             }
-        }.runTaskLater(plugin, quizDuration * 20); // Convert quiz duration to ticks (20 ticks per second)
+        }.runTaskLater(plugin, quizDuration * 20);  // Convert quiz duration to ticks (20 ticks per second)
 
         return true;
     }

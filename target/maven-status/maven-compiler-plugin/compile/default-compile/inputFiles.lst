@@ -3,7 +3,10 @@ C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\bett
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\QuestionCommand.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\SetDeathBanMessageCommand.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\ExemptCommand.java
+C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\HelpCommand.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\listeners\DeathBanListener.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\listeners\QuizListener.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\DeathBanCommand.java
+C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\ExplainQuizCommand.java
 C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\commands\AddQuestionCommand.java
+C:\Users\notpe\IdeaProjects\BetterQuizsForEvents\src\main\java\com\person98\betterquizsforevents\listeners\ChatListener.java

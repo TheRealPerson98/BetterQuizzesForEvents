@@ -24,6 +24,9 @@ commands:
   bqfehelp:
     description: Shows help and usage information for BetterQuizzesForEvents
     usage: /<command>
+  explainquiz:
+    description: Explain the quiz rules to all players.
+    usage: /explainquiz
   permissions:
     betterquizsforevents.addquestion:
       description: Allows adding questions to the quiz
@@ -45,4 +48,7 @@ commands:
       default: op
     betterquizsforevents.bqfehelp:
       description: Allows access to the help command
+      default: op
+    betterquizsforevents.explainquiz:
+      description: Allows access to the explain command
       default: op

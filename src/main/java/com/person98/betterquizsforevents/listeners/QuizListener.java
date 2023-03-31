@@ -32,10 +32,12 @@ public class QuizListener implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         BetterQuizzesForEvents plugin = JavaPlugin.getPlugin(BetterQuizzesForEvents.class);
+        Player player = event.getEntity();
         if (plugin.getConfig().getBoolean("spectatorOnDeath")) {
-            Player player = event.getEntity();
             Bukkit.getScheduler().runTask(plugin, () -> player.setGameMode(GameMode.SPECTATOR));
         }
+        // Add player to exemptPlayers when they die
+        BetterQuizzesForEvents.exemptPlayers.add(player.getUniqueId());
     }
     public static void endQuestion() {
         for (Player player : Bukkit.getOnlinePlayers()) {

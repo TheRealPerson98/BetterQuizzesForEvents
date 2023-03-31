@@ -72,6 +72,7 @@ public class QuestionCommand implements CommandExecutor {
         }
 
         // Display the choices in chat with different colors
+
         ChatColor choice1ChatColor = ChatColor.valueOf(choice1Color.toUpperCase());
         ChatColor choice2ChatColor = ChatColor.valueOf(choice2Color.toUpperCase());
         ChatColor choice3ChatColor = ChatColor.valueOf(choice3Color.toUpperCase());
@@ -95,6 +96,8 @@ public class QuestionCommand implements CommandExecutor {
 
         // Display the choices in chat for all players
         for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(ChatColor.GOLD + question);
+
             player.spigot().sendMessage(choice1Text);
             player.spigot().sendMessage(choice2Text);
             player.spigot().sendMessage(choice3Text);

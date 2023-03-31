@@ -89,8 +89,6 @@ public class QuestionCommand implements CommandExecutor {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!BetterQuizzesForEvents.exemptPlayers.contains(player.getUniqueId())) {
                 player.sendTitle(ChatColor.GOLD + question, "", 10, 70, 20);
-            } else {
-                player.sendMessage(ChatColor.GOLD + question);
             }
         }
 
